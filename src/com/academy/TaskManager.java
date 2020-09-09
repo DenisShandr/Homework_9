@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class TaskManager implements Serializable {
 
-    private Scanner in = new Scanner(System.in);
+    private static Scanner in = new Scanner(System.in);
 
     private List<Task> tasks = new ArrayList<>();
 

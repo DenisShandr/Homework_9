@@ -2,6 +2,7 @@ package com.academy;
 
 import com.academy.services.TaskSorter;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,36 +10,30 @@ import java.util.Scanner;
 
 import static com.academy.Task.TaskPriority.*;
 
+
 public class Main {
 
-    public static void main(String[] args) {
+    private static final String TASK_LIST_FILE = "taskListFile.txt";
 
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        TaskManager taskManager = new TaskManager();
         Scanner in = new Scanner(System.in);
 
-        TaskManager taskManager = new TaskManager();
-
-        List<Task> taskList = new ArrayList<Task>();
-
-        taskList.add(new Task("Name1", "Category3", LocalDate.of(2020, 9, 10), LOW));
-        taskList.add(new Task("Name2", "Category6", LocalDate.of(2021, 9, 10), HIGH));
-        taskList.add(new Task("Name3", "Category2", LocalDate.of(2023, 12, 22), MIDDLE));
-        taskList.add(new Task("Name6", "Category1", LocalDate.of(2020, 12, 10), LOW));
-        taskList.add(new Task("Name5", "Category5", LocalDate.of(2020, 9, 23), HIGH));
-        taskList.add(new Task("Name4", "Category0", LocalDate.of(2020, 10, 1), LOW));
-        taskList.add(new Task("Name0", "Category4", LocalDate.of(2022, 8, 8), MIDDLE));
-
-//        taskManager.addTask();
-//        taskManager.showTasks();
-//        taskManager.editTask();
+//        List<Task> taskList = new ArrayList<>();
+//        taskList.add(new Task("Name1", "Category3", LocalDate.of(2020, 9, 10), LOW));
+//        taskList.add(new Task("Name2", "Category6", LocalDate.of(2021, 9, 10), HIGH));
+//        taskList.add(new Task("Name3", "Category2", LocalDate.of(2023, 12, 22), MIDDLE));
+//        taskList.add(new Task("Name6", "Category1", LocalDate.of(2020, 12, 10), LOW));
+//        taskList.add(new Task("Name5", "Category5", LocalDate.of(2020, 9, 23), HIGH));
+//        taskList.add(new Task("Name4", "Category0", LocalDate.of(2020, 10, 1), LOW));
+//        taskList.add(new Task("Name0", "Category4", LocalDate.of(2022, 8, 8), MIDDLE));
 //
-//
-//        taskManager.showTasks();
-//        taskManager.deleteTask();
-        taskManager.setTasks(taskList);
-//        taskManager.showTasks();
-//
-//        TaskSorter.sortByName(taskManager);
-//        taskManager.showTasks();
+
+
+        taskManager.setTasks(loadFile().getTasks());
+
+
+
         boolean exit = true;
         while (exit) {
             System.out.println("Hello! This is Task Manager.");
@@ -54,28 +49,50 @@ public class Main {
             switch (in.next()) {
                 case "add":
                     taskManager.addTask();
+                    saveFile(taskManager);
                     break;
                 case "delete":
                     taskManager.deleteTask();
+                    saveFile(taskManager);
                     break;
                 case "show":
                     taskManager.showTasks();
                     break;
                 case "edit":
                     taskManager.editTask();
+                    saveFile(taskManager);
                     break;
                 case "sort":
                     sorterTool(taskManager);
+                    saveFile(taskManager);
                     break;
                 case "exit":
                     exit = false;
                     break;
                 default:
                     System.out.println("Incorrect command!");
+                    break;
             }
         }
 
 
+    }
+
+    public static void saveFile(TaskManager taskManager) throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream(TASK_LIST_FILE);
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(taskManager);
+    }
+
+    public static TaskManager loadFile() throws IOException, ClassNotFoundException {
+        FileInputStream fileInputStream = new FileInputStream(TASK_LIST_FILE);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        Object object = objectInputStream.readObject();
+        TaskManager taskManager = null;
+        if (object instanceof TaskManager) {
+            taskManager = (TaskManager) object;
+        }
+        return taskManager;
     }
 
     public static void sorterTool(TaskManager taskManager) {

@@ -1,9 +1,10 @@
 package com.academy;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Task {
+public class Task implements Serializable {
 
     private String name;
     private String category;
@@ -65,7 +66,7 @@ public class Task {
                 ", time left = " + getTimeLeft(executionDate);
     }
 
-    private static String getTimeLeft(LocalDate date) {
+    private String getTimeLeft(LocalDate date) {
         Period period = Period.between(LocalDate.now(), date);
         return (period.getYears() + " years, " +
                 period.getMonths() + " months, " +
