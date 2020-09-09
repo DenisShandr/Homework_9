@@ -74,9 +74,9 @@ public class Task {
 
     public enum TaskPriority {
 
-        HIGH ("high"),
-        MIDDLE ("middle"),
-        LOW ("low");
+        HIGH("high"),
+        MIDDLE("middle"),
+        LOW("low");
 
         private final String value;
 

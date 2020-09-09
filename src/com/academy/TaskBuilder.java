@@ -4,12 +4,11 @@ import com.academy.Task.TaskPriority;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.Scanner;
 
 import static com.academy.Task.TaskPriority.*;
 
-public class TaskBuilder  {
+public class TaskBuilder {
 
     static Scanner in = new Scanner(System.in);
 

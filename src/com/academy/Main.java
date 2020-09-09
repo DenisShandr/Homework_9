@@ -3,7 +3,9 @@ package com.academy;
 import com.academy.services.TaskSorter;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import static com.academy.Task.TaskPriority.*;
 
@@ -99,7 +101,7 @@ public class Main {
                 break;
             default:
                 System.out.println("Incorrect command!");
-                return;
+                break;
         }
 
 
