@@ -11,14 +11,13 @@ public class TaskManager implements Serializable {
 
     List<Task> tasks = new ArrayList<>();
 
-    private List<Task> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 
-    private void setTasks(List<Task> tasks) {
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
-
 
     @Override
     public String toString() {

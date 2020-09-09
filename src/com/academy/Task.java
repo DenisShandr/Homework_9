@@ -1,6 +1,7 @@
 package com.academy;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Task {
 
@@ -15,18 +16,7 @@ public class Task {
         this.category = category;
         this.priority = priority;
         this.executionDate = executionDate;
-    }
-
-    public Task(String name, String category, LocalDate executionDate, TaskPriority priority, String timeLeft) {
-        this.name = name;
-        this.category = category;
-        this.priority = priority;
-        this.executionDate = executionDate;
-        this.timeLeft = timeLeft;
-    }
-
-    public String getTimeLeft() {
-        return timeLeft;
+        this.timeLeft = getTimeLeft(this.executionDate);
     }
 
     public void setTimeLeft(String timeLeft) {
@@ -72,7 +62,14 @@ public class Task {
                 ", category = " + category +
                 ", execution date = " + executionDate +
                 ", priority = " + priority +
-                ", time left = " + timeLeft;
+                ", time left = " + getTimeLeft(executionDate);
+    }
+
+    private static String getTimeLeft(LocalDate date) {
+        Period period = Period.between(LocalDate.now(), date);
+        return (period.getYears() + " years, " +
+                period.getMonths() + " months, " +
+                period.getDays() + " days.");
     }
 
     public enum TaskPriority {

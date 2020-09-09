@@ -18,8 +18,7 @@ public class TaskBuilder  {
         String category = getString("Enter category of the task: ");
         LocalDate date = getDate("Enter execution date : ");
         TaskPriority priority = getPriority("Enter HIGH, MIDDLE or LOW priority: ");
-        String timeLeft = getTimeLeft(date);
-        return new Task(name, category, date, priority, timeLeft);
+        return new Task(name, category, date, priority);
     }
 
     public static Task edit(Task task) {
@@ -27,10 +26,8 @@ public class TaskBuilder  {
         System.out.println(task.toString());
         task.setName(getString("Enter new name: "));
         task.setCategory(getString("Enter new category: "));
-        LocalDate date = getDate("Enter new execution date: ");
-        task.setExecutionDate(date);
+        task.setExecutionDate(getDate("Enter new execution date: "));
         task.setPriority(getPriority("Enter new priority: "));
-        task.setTimeLeft(getTimeLeft(date));
         return task;
     }
 
@@ -123,12 +120,5 @@ public class TaskBuilder  {
             return true;
         }
         return false;
-    }
-
-    private static String getTimeLeft(LocalDate date) {
-        Period period = Period.between(LocalDate.now(), date);
-        return (period.getYears() + " years, " +
-                period.getMonths() + " months, " +
-                period.getDays() + " days.");
     }
 }
