@@ -65,7 +65,7 @@ public class Task {
                 ", category = " + category +
                 ", execution date = " + executionDate +
                 ", priority = " + priority +
-                ", days left = " + timeLeft;
+                ", time left = " + timeLeft;
     }
 
     public enum TaskPriority {
