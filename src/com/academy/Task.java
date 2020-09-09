@@ -8,12 +8,22 @@ public class Task {
     private String category;
     private TaskPriority priority;
     private LocalDate executionDate;
+    private String timeLeft;
 
-    public Task(String name, String category, LocalDate executionDate, TaskPriority priority) {
+    public Task(String name, String category, LocalDate executionDate, TaskPriority priority, String timeLeft) {
         this.name = name;
         this.category = category;
         this.priority = priority;
         this.executionDate = executionDate;
+        this.timeLeft = timeLeft;
+    }
+
+    public String getTimeLeft() {
+        return timeLeft;
+    }
+
+    public void setTimeLeft(String timeLeft) {
+        this.timeLeft = timeLeft;
     }
 
     public String getName() {
@@ -54,7 +64,8 @@ public class Task {
         return "name = " + name +
                 ", category = " + category +
                 ", execution date = " + executionDate +
-                ", priority = " + priority;
+                ", priority = " + priority +
+                ", days left = " + timeLeft;
     }
 
     public enum TaskPriority {

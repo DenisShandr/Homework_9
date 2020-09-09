@@ -47,6 +47,7 @@ public class TaskManager implements Serializable {
     }
 
     public void showTasks(){
+        System.out.println();
         System.out.println("==============[Task list]==============");
         if (tasks.size() == 0){
             System.out.println("There is no tasks.");

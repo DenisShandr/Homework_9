@@ -2,6 +2,7 @@ package com.academy;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.Scanner;
 
 import static com.academy.Task.TaskPriority.*;
@@ -10,15 +11,17 @@ public class TaskBuilder extends Task{
 
     static Scanner in = new Scanner(System.in);
 
-    public TaskBuilder(String name, String category, LocalDate executionDate, TaskPriority priority) {
-        super(name, category, executionDate, priority);
+    public TaskBuilder(String name, String category, LocalDate executionDate, TaskPriority priority, String timeLeft) {
+        super(name, category, executionDate, priority, timeLeft);
     }
 
     public static Task build(){
-    return new Task(getString("Enter name of the task: "),
-    getString("Enter category of the task: "),
-    getDate("Enter execution date : "),
-    getPriority("Enter HIGH, MIDDLE or LOW priority: "));
+        String name = getString("Enter name of the task: ");
+        String category = getString("Enter category of the task: ");
+        LocalDate date = getDate("Enter execution date : ");
+        TaskPriority priority = getPriority("Enter HIGH, MIDDLE or LOW priority: ");
+        String timeLeft = getTimeLeft(date);
+    return new Task(name, category, date, priority, timeLeft);
     }
 
     public static Task edit(Task task){
@@ -26,8 +29,10 @@ public class TaskBuilder extends Task{
         System.out.println(task.toString());
         task.setName(getString("Enter new name: "));
         task.setCategory(getString("Enter new category: "));
-        task.setExecutionDate(getDate("Enter new execution date: "));
+        LocalDate date = getDate("Enter new execution date: ");
+        task.setExecutionDate(date);
         task.setPriority(getPriority("Enter new priority: "));
+        task.setTimeLeft(getTimeLeft(date));
         return task;
     }
 
@@ -60,7 +65,7 @@ public class TaskBuilder extends Task{
                 return priority;
         }
         if (priority == null){
-            priority = getPriority("You must enter correct priority: ");
+            priority = getPriority("You must enter correct priority (HIGH, MIDDLE, LOW): ");
         }
         return priority;
     }
@@ -120,5 +125,12 @@ public class TaskBuilder extends Task{
             return true;
         }
         return false;
+    }
+
+    private static String getTimeLeft(LocalDate date){
+        Period period = Period.between(LocalDate.now(), date);
+        return (period.getYears() + " years, " +
+                period.getMonths() + " months, " +
+                period.getDays() + " days.");
     }
 }

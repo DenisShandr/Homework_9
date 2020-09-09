@@ -3,10 +3,8 @@ package com.academy;
 import org.w3c.dom.ls.LSOutput;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.time.Period;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,14 +16,14 @@ public class Main {
 
         List<Task> taskList = new ArrayList<>();
         TaskManager taskManager = new TaskManager();
-        Task task1 = new Task("name1", "something", LocalDate.now(), LOW);
-        Task task2 = new Task("name2", "something", LocalDate.now(), HIGH);
-        Task task3 = new Task("name3", "something", LocalDate.now(), MIDDLE);
-        Task task4 = new Task("name4", "something", LocalDate.now(), LOW);
-        taskList.add(task1);
-        taskList.add(task2);
-        taskList.add(task3);
-        taskList.add(task4);
+//        Task task1 = new Task("name1", "something", LocalDate.now(), LOW);
+//        Task task2 = new Task("name2", "something", LocalDate.now(), HIGH);
+//        Task task3 = new Task("name3", "something", LocalDate.now(), MIDDLE);
+//        Task task4 = new Task("name4", "something", LocalDate.now(), LOW);
+//        taskList.add(task1);
+//        taskList.add(task2);
+//        taskList.add(task3);
+//        taskList.add(task4);
 //        taskManager.setTasks(taskList);
 
         taskManager.addTask();
@@ -38,6 +36,11 @@ public class Main {
 
 
         taskManager.showTasks();
+//        LocalDate date = LocalDate.of(2021, 2, 9);
+//
+//        Period period = Period.between(LocalDate.now(), date);
+//        System.out.println(period.getYears() + "." + period.getMonths() + "." + period.getDays());
+
 
     }
 }
