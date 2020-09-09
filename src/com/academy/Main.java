@@ -27,28 +27,22 @@ public class Main {
         taskList.add(task3);
         taskList.add(task4);
         taskManager.setTasks(taskList);
+
         taskManager.addTask();
 
-        taskManager.toString();
 
+        taskManager.showTasks();
         taskManager.deleteTask();
 
-        taskManager.toString();
 
+        taskManager.showTasks();
 
-
-//        taskManager.getTasks().forEach(System.out::println);
-//        taskManager.getTasks()
-//                .forEach(element -> System.out.println(taskManager.getTasks().indexOf(element) + 1 + ": " + element.toString()));
-
-
-
-
-
-
-
-
-
+//        Scanner in = new Scanner(System.in);
+//        int year = in.nextInt();
+//
+//        if ((((year % 4) == 0 && !((year % 100) == 0))) || ((year % 400) == 0) && (year % 4) == 0){
+//            System.out.println(true);;
+//        } else System.out.println(false);
 
     }
 }

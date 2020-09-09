@@ -58,13 +58,6 @@ public class TaskBuilder {
         return year;
     }
 
-    private static boolean leapYear(int year) {
-        if (((year / 4) == 0 && (year / 100) != 0) || (year / 400) == 0) {
-            return true;
-        }
-        return false;
-    }
-
 
     private static int getMonth(String s) {
         System.out.print(s);
@@ -83,7 +76,7 @@ public class TaskBuilder {
     private static int getDay(String s, int year, int month) {
         System.out.print(s);
         int day = in.nextInt();
-        if (day >= daysOfMonth(month, year)) {
+        if (day > daysOfMonth(month, year)) {
             day = getDay("No such day exist! Enter correct day: ", year, month);
         }
         return day;
@@ -106,5 +99,10 @@ public class TaskBuilder {
         return 31;
     }
 
-
+    private static boolean leapYear(int year) {
+        if ((((year % 4) == 0 && !((year % 100) == 0))) || ((year % 400) == 0) && (year % 4) == 0){
+            return true;
+        }
+        return false;
+    }
 }

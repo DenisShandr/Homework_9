@@ -38,7 +38,7 @@ public class TaskManager {
         int index = 0;
         try {
             index = in.nextInt();
-            if (index >= tasks.size()){
+            if (index > tasks.size()){
                 System.out.println("There is no task with this number!");
                 return;
             }
@@ -48,6 +48,10 @@ public class TaskManager {
         }
 
         tasks.remove(index - 1);
+    }
+
+    public void showTasks(){
+        toString();
     }
 
 
