@@ -1,10 +1,11 @@
 package com.academy;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.academy.Task.*;
+import static com.academy.Task.TaskPriority;
 import static com.academy.Task.TaskPriority.*;
 
 public class TaskManager {
@@ -28,34 +29,27 @@ public class TaskManager {
         return "";
     }
 
-    public void addTask(Task task){
-
-
-
-
-        Date date = getString("Enter execution date : ");
-        TaskPriority priority;
-        System.out.print("Enter priority : ");
-        switch (in.nextLine()){
-            case "HIGH": priority = HIGH;
-            break;
-            case "MIDDLE": priority = MIDDLE;
-            break;
-            case "LOW": priority = LOW;
-            break;
-        }
-
-
-
-
-        tasks.add(new Task(getString("Enter name of the task: "),
-                           getString("Enter category of the task: "), date, priority));
+    public void addTask() {
+        tasks.add(TaskBuilder.build());
     }
 
-    private String getString(String s) {
-        System.out.print(s);
-        return in.nextLine();
+    public void deleteTask(){
+        System.out.print("Enter the number of the task you want to delete: ");
+        int index = 0;
+        try {
+            index = in.nextInt();
+            if (index >= tasks.size()){
+                System.out.println("There is no task with this number!");
+                return;
+            }
+        } catch (Exception e) {
+            System.out.println("Incorrect number! ");
+            return;
+        }
+
+        tasks.remove(index - 1);
     }
 
 
 }
+

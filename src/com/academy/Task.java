@@ -1,15 +1,15 @@
 package com.academy;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Task {
 
     private String name;
     private String category;
     private TaskPriority priority;
-    private Date executionDate;
+    private LocalDate executionDate;
 
-    public Task(String name, String category, Date executionDate, TaskPriority priority) {
+    public Task(String name, String category, LocalDate executionDate, TaskPriority priority) {
         this.name = name;
         this.category = category;
         this.priority = priority;
@@ -40,11 +40,11 @@ public class Task {
         this.priority = priority;
     }
 
-    public Date getExecutionDate() {
+    public LocalDate getExecutionDate() {
         return executionDate;
     }
 
-    public void setExecutionDate(Date executionDate) {
+    public void setExecutionDate(LocalDate executionDate) {
         this.executionDate = executionDate;
     }
 
@@ -59,11 +59,14 @@ public class Task {
 
     public enum TaskPriority {
 
-        HIGH (1),
-        MIDDLE (2),
-        LOW (3);
+        HIGH ("high"),
+        MIDDLE ("middle"),
+        LOW ("low");
 
-        TaskPriority(int i) {
+        private final String value;
+
+        TaskPriority(String value) {
+            this.value = value;
         }
     }
 }
