@@ -32,11 +32,6 @@ public class Main {
 
         taskManager.setTasks(taskList);
         taskManager.showTasks();
-
-
-        TaskSorter taskSorter = new TaskSorterImpl();
-        taskSorter.sortByCategory(taskManager);
-        taskManager.showTasks();
         TaskSorter.sortByName(taskManager);
 
 
