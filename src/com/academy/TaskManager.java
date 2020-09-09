@@ -62,7 +62,7 @@ public class TaskManager implements Serializable {
         int index = 0;
         try {
             index = in.nextInt();
-            if (index > tasks.size()){
+            if (index > tasks.size() || index == 0){
                 System.out.println("There is no task with this number!");
                 return;
             }
