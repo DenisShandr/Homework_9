@@ -1,24 +1,21 @@
 package com.academy;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.academy.Task.TaskPriority;
-import static com.academy.Task.TaskPriority.*;
-
-public class TaskManager {
+public class TaskManager implements Serializable {
 
     Scanner in = new Scanner(System.in);
 
-    List<Task> tasks;
+    List<Task> tasks = new ArrayList<>();
 
-    public List<Task> getTasks() {
+    private List<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks) {
+    private void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 
@@ -51,7 +48,13 @@ public class TaskManager {
     }
 
     public void showTasks(){
+        System.out.println("==============[Task list]==============");
+        if (tasks.size() == 0){
+            System.out.println("There is no tasks.");
+        }
         toString();
+        System.out.println("=================[End]=================");
+        System.out.println();
     }
 
 

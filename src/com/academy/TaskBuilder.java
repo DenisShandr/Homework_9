@@ -19,14 +19,16 @@ public class TaskBuilder {
 
     private static LocalDate getDate(String s) {
         System.out.println(s);
+        LocalDate date;
         int yyyy = getYear("Year: ");
         int mm = getMonth("Month: ");
         int dd = getDay("Enter day: ", yyyy, mm);
         if (LocalDate.of(yyyy, mm, dd).isBefore(LocalDate.now())) {
-            getDate("That day has already passed. Enter correct date.");
+            date = getDate("That day has already passed. Enter correct date.");
+        } else {
+            date = LocalDate.of(yyyy, mm, dd);
         }
-        System.out.println(LocalDate.of(yyyy, mm, dd));
-        return LocalDate.of(yyyy, mm, dd);
+        return date;
     }
 
     private static Task.TaskPriority getPriority(String s) {

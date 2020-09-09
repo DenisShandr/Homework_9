@@ -26,7 +26,7 @@ public class Main {
         taskList.add(task2);
         taskList.add(task3);
         taskList.add(task4);
-        taskManager.setTasks(taskList);
+//        taskManager.setTasks(taskList);
 
         taskManager.addTask();
 
@@ -36,13 +36,6 @@ public class Main {
 
 
         taskManager.showTasks();
-
-//        Scanner in = new Scanner(System.in);
-//        int year = in.nextInt();
-//
-//        if ((((year % 4) == 0 && !((year % 100) == 0))) || ((year % 400) == 0) && (year % 4) == 0){
-//            System.out.println(true);;
-//        } else System.out.println(false);
 
     }
 }
