@@ -30,12 +30,12 @@ public class TaskManager implements Serializable {
         tasks.add(TaskBuilder.build());
     }
 
-    public void deleteTask(){
+    public void deleteTask() {
         System.out.print("Enter the number of the task you want to delete: ");
         int index = 0;
         try {
             index = in.nextInt();
-            if (index > tasks.size()){
+            if (index > tasks.size()) {
                 System.out.println("There is no task with this number!");
                 return;
             }
@@ -46,10 +46,10 @@ public class TaskManager implements Serializable {
         tasks.remove(index - 1);
     }
 
-    public void showTasks(){
+    public void showTasks() {
         System.out.println();
         System.out.println("==============[Task list]==============");
-        if (tasks.size() == 0){
+        if (tasks.size() == 0) {
             System.out.println("There is no tasks.");
         }
         toString();
@@ -57,12 +57,12 @@ public class TaskManager implements Serializable {
         System.out.println();
     }
 
-    public void editTask(){
+    public void editTask() {
         System.out.print("Enter the number of the task you want to edit: ");
         int index = 0;
         try {
             index = in.nextInt();
-            if (index > tasks.size() || index == 0){
+            if (index > tasks.size() || index == 0) {
                 System.out.println("There is no task with this number!");
                 return;
             }
@@ -70,10 +70,8 @@ public class TaskManager implements Serializable {
             System.out.println("Incorrect number! ");
             return;
         }
-
         TaskBuilder.edit(tasks.get(index - 1));
     }
-
 
 
 }

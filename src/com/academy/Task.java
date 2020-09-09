@@ -10,6 +10,13 @@ public class Task {
     private LocalDate executionDate;
     private String timeLeft;
 
+    public Task(String name, String category, LocalDate executionDate, TaskPriority priority) {
+        this.name = name;
+        this.category = category;
+        this.priority = priority;
+        this.executionDate = executionDate;
+    }
+
     public Task(String name, String category, LocalDate executionDate, TaskPriority priority, String timeLeft) {
         this.name = name;
         this.category = category;
