@@ -57,10 +57,10 @@ public class TaskBuilder {
             case "LOW":
                 priority = LOW;
                 return priority;
+            default:
+                priority = getPriority("You must enter correct priority (HIGH, MIDDLE, LOW): ");
         }
-        if (priority == null) {
-            priority = getPriority("You must enter correct priority (HIGH, MIDDLE, LOW): ");
-        }
+
         return priority;
     }
 
