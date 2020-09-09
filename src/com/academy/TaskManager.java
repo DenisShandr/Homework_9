@@ -43,7 +43,6 @@ public class TaskManager implements Serializable {
             System.out.println("Incorrect number! ");
             return;
         }
-
         tasks.remove(index - 1);
     }
 
@@ -56,6 +55,24 @@ public class TaskManager implements Serializable {
         System.out.println("=================[End]=================");
         System.out.println();
     }
+
+    public void editTask(){
+        System.out.print("Enter the number of the task you want to edit: ");
+        int index = 0;
+        try {
+            index = in.nextInt();
+            if (index > tasks.size()){
+                System.out.println("There is no task with this number!");
+                return;
+            }
+        } catch (Exception e) {
+            System.out.println("Incorrect number! ");
+            return;
+        }
+
+        TaskBuilder.edit(tasks.get(index - 1));
+    }
+
 
 
 }

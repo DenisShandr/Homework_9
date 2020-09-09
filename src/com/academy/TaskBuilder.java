@@ -6,15 +6,29 @@ import java.util.Scanner;
 
 import static com.academy.Task.TaskPriority.*;
 
-public class TaskBuilder {
+public class TaskBuilder extends Task{
 
     static Scanner in = new Scanner(System.in);
+
+    public TaskBuilder(String name, String category, LocalDate executionDate, TaskPriority priority) {
+        super(name, category, executionDate, priority);
+    }
 
     public static Task build(){
     return new Task(getString("Enter name of the task: "),
     getString("Enter category of the task: "),
     getDate("Enter execution date : "),
     getPriority("Enter HIGH, MIDDLE or LOW priority: "));
+    }
+
+    public static Task edit(Task task){
+        System.out.println("you will edit the following task: " );
+        System.out.println(task.toString());
+        task.setName(getString("Enter new name: "));
+        task.setCategory(getString("Enter new category: "));
+        task.setExecutionDate(getDate("Enter new execution date: "));
+        task.setPriority(getPriority("Enter new priority: "));
+        return task;
     }
 
     private static LocalDate getDate(String s) {
@@ -72,7 +86,7 @@ public class TaskBuilder {
 
     private static String getString(String s) {
         System.out.print(s);
-        return in.nextLine();
+        return in.next();
     }
 
     private static int getDay(String s, int year, int month) {

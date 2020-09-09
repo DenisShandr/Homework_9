@@ -29,6 +29,8 @@ public class Main {
 //        taskManager.setTasks(taskList);
 
         taskManager.addTask();
+        taskManager.showTasks();
+        taskManager.editTask();
 
 
         taskManager.showTasks();
